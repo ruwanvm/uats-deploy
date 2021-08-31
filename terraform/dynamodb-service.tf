@@ -7,6 +7,10 @@ resource "kubernetes_service" "dynamodb" {
   spec {
     type          = "ExternalName"
     external_name = local.dynamodb_endpoint
+    port {
+      name = "https-port"
+      port = 443
+    }
   }
 }
 
