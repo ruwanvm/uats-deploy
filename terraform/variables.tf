@@ -8,6 +8,10 @@ variable "environment" {
   description = "Environment name"
 }
 
+variable "AWS_REGION" {
+  description = "AWS Region of the Environment"
+}
+
 variable "POD_AWS_ACCESS_KEY_ID" {
   description = "AWS_ACCESS_KEY_ID used by microservices to access AWS resources"
 }

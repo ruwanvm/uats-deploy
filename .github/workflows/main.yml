@@ -66,6 +66,7 @@ jobs:
             -var "eks_host=$EKS_HOST" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
+            -var "AWS_REGION=$EKS_REGION" \
             -var "POD_AWS_ACCESS_KEY_ID=$POD_AWS_ACCESS_KEY_ID" \
             -var "POD_AWS_SECRET_ACCESS_KEY=$POD_AWS_SECRET_ACCESS_KEY" \
             -var "ECR_REGISTRY=$ECR_REGISTRY" \
