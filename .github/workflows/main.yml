@@ -58,6 +58,7 @@ jobs:
           POD_AWS_SECRET_ACCESS_KEY: ${{ secrets.POD_SECRET_ACCESS_KEY }}
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_GEN2 }}
+          # APP_VERSION variable should be applied when adding to main workflow
         run: |
           cd ./terraform
           terraform init \
