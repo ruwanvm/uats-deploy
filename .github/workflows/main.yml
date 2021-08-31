@@ -2,8 +2,7 @@ name: Deploy UATS microservices
 on:
   push:
     branches:
-      - main
-      # Add more branches
+      - main # Add more branches
 jobs:
   prepare:
     name: Prepare Workspace
