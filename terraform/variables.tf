@@ -34,5 +34,5 @@ variable "APP_VERSION" {
 locals {
   cluster_name = "${var.environment}-eks-cluster"
   env_name_gen2 = "${var.environment}_v2"
-  dynamodb_endpoint = "dynamodb.${var.environment}.amazonaws.com"
+  dynamodb_endpoint = "dynamodb.${var.AWS_REGION}.amazonaws.com"
 }
