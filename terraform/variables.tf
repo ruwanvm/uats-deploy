@@ -1,9 +1,6 @@
 variable "eks_host" {
   description = "EKS cluster endpoint"
 }
-variable "eks_token" {
-  description = "EKS cluster auth token"
-}
 variable "eks_certificate" {
   description = "EKS cluster certificate value"
 }
@@ -18,6 +15,22 @@ variable "POD_AWS_SECRET_ACCESS_KEY" {
   description = "AWS_SECRET_ACCESS_KEY used by microservices to access AWS resources"
 }
 
+variable "ECR_REGISTRY" {
+  description = "ECR registry endpoint"
+}
+
+variable "ECR_REPOSITORY" {
+  description = "ECR registry endpoint"
+}
+
+variable "APP_VERSION" {
+  description = "ECR registry endpoint"
+}
+
 locals {
   cluster_name = "${var.environment}-eks-cluster"
+}
+
+locals {
+  env_name_gen2 = "${var.environment}_v2"
 }

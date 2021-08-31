@@ -12,4 +12,4 @@
 crash.log
 
 # Ignore any .tfvars
-**.tfvars
+# **.tfvars

@@ -16,13 +16,13 @@ jobs:
         run: |
           echo "::set-output name=environment_name::${GITHUB_REF_SLUG}";
           echo "::set-output name=eks_host_key::EKS_HOST_${GITHUB_REF_SLUG}";
-          echo "::set-output name=eks_token_key::EKS_TOKEN_${GITHUB_REF_SLUG}";
           echo "::set-output name=eks_certificate_key::EKS_CERT_${GITHUB_REF_SLUG}";
+          echo "::set-output name=eks_region_key::EKS_REGION_${GITHUB_REF_SLUG}";
     outputs:
       environment_name: ${{ steps.prepare-env.outputs.environment_name }}
       eks_host_key: ${{ steps.prepare-env.outputs.eks_host_key }}
-      eks_token_key: ${{ steps.prepare-env.outputs.eks_token_key }}
       eks_certificate_key: ${{ steps.prepare-env.outputs.eks_certificate_key }}
+      eks_region_key: ${{ steps.prepare-env.outputs.eks_region_key }}
   deploy:
     name: Deploy microservices
     needs:
@@ -32,8 +32,8 @@ jobs:
     env:
       ENV_NAME: ${{ needs.prepare.outputs.environment_name }}
       EKS_HOST_KEY: ${{ needs.prepare.outputs.eks_host_key }}
-      EKS_TOKEN_KEY: ${{ needs.prepare.outputs.eks_token_key }}
       EKS_CERTIFICATE_KEY: ${{ needs.prepare.outputs.eks_certificate_key }}
+      EKS_REGION_KEY: ${{ needs.prepare.outputs.eks_region_key }}
       TF_BACKEND_BUCKET: ${{ secrets.TF_BACKEND_BUCKET }}
       TF_BACKEND_REGION: ${{ secrets.TF_BACKEND_REGION }}
       TF_BACKEND_KEY: terraform/$ENV_NAME-kubernetes-cluster.tfstate
@@ -49,10 +49,12 @@ jobs:
       - name: Run Terraform configurations
         env:
           EKS_HOST: ${{ secrets[env.EKS_HOST_KEY] }}
-          EKS_TOKEN: ${{ secrets[env.EKS_TOKEN_KEY] }}
           EKS_CERTIFICATE: ${{ secrets[env.EKS_CERTIFICATE_KEY] }}
+          EKS_REGION: ${{ secrets[env.EKS_REGION_KEY] }}
           POD_AWS_ACCESS_KEY_ID: ${{ secrets.POD_ACCESS_KEY_ID }}
           POD_AWS_SECRET_ACCESS_KEY: ${{ secrets.POD_SECRET_ACCESS_KEY }}
+          ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
+          ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_GEN2 }}
         run: |
           cd ./terraform
           terraform init \
@@ -62,11 +64,12 @@ jobs:
             --reconfigure
           terraform apply \
             -var "eks_host=$EKS_HOST" \
-            -var "eks_token=$EKS_TOKEN" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
             -var "POD_AWS_ACCESS_KEY_ID=$POD_AWS_ACCESS_KEY_ID" \
             -var "POD_AWS_SECRET_ACCESS_KEY=$POD_AWS_SECRET_ACCESS_KEY" \
+            -var "ECR_REGISTRY=$ECR_REGISTRY" \
+            -var "ECR_REPOSITORY=$ECR_REPOSITORY_GEN2" \
             --auto-approve
           echo "$ENV_NAME is deployed"
 
