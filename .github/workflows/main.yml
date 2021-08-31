@@ -1,4 +1,4 @@
-name: Deploy UATS microservices to EKS cluster
+name: Deploy UATS microservices
 on:
   push:
     branches:
@@ -25,7 +25,7 @@ jobs:
       eks_token_key: ${{ steps.prepare-env.outputs.eks_token_key }}
       eks_certificate_key: ${{ steps.prepare-env.outputs.eks_certificate_key }}
   deploy:
-    name: Deploy microservices to EKS cluster
+    name: Deploy microservices
     needs:
       - prepare
     runs-on: ubuntu-20.04

@@ -9,6 +9,10 @@ terraform {
 
 provider "kubernetes" {
   host                   = var.eks_host
-  token                  = var.eks_token
   cluster_ca_certificate = base64decode(var.eks_certificate)
+  exec {
+    api_version = "client.authentication.k8s.io/v1alpha1"
+    args = ["eks", "get-token", "--cluster-name", local.cluster_name]
+    command = "aws"
+  }
 }

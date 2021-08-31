@@ -8,5 +8,9 @@ variable "eks_certificate" {
   default = "EKS cluster certificate value"
 }
 variable "environment" {
-  default = ""
+  default = "EKS cluster environment"
+}
+
+locals {
+  cluster_name = "${var.environment}-eks-cluster"
 }
