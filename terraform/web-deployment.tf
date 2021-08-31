@@ -61,7 +61,7 @@ resource "kubernetes_deployment" "web-deployment" {
 
             value_from {
               secret_key_ref {
-                name = "aws-keys"
+                name = "pod-aws-keys"
                 key  = "AWS_ACCESS_KEY_ID"
               }
             }
@@ -72,7 +72,7 @@ resource "kubernetes_deployment" "web-deployment" {
 
             value_from {
               secret_key_ref {
-                name = "aws-keys"
+                name = "pod-aws-keys"
                 key  = "AWS_SECRET_ACCESS_KEY"
               }
             }
