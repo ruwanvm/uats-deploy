@@ -65,4 +65,5 @@ jobs:
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
             --auto-approve
+          echo "$ENV_NAME is deployed"
 
