@@ -1,6 +1,6 @@
 resource "kubernetes_service" "dynamodb" {
   metadata {
-    name      = "dynamodb-service"
+    name      = "dynamodb"
     namespace = kubernetes_namespace.namespace.id
   }
 
