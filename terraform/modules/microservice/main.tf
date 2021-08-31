@@ -70,7 +70,7 @@ resource "kubernetes_deployment" "microservice-deployment" {
             name = "AWS_ACCESS_KEY_ID"
             value_from {
               secret_key_ref {
-                name = "aws-keys"
+                name = "pod-aws-keys"
                 key  = "AWS_ACCESS_KEY_ID"
               }
             }
@@ -79,7 +79,7 @@ resource "kubernetes_deployment" "microservice-deployment" {
             name = "AWS_SECRET_ACCESS_KEY"
             value_from {
               secret_key_ref {
-                name = "aws-keys"
+                name = "pod-aws-keys"
                 key  = "AWS_SECRET_ACCESS_KEY"
               }
             }
@@ -98,7 +98,7 @@ resource "kubernetes_deployment" "microservice-deployment" {
               memory = var.memory
             }
           }
-          image_pull_policy = "IfNotPresent"
+          image_pull_policy = "Always"
         }
       }
     }

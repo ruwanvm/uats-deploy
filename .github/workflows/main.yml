@@ -65,7 +65,7 @@ jobs:
             -backend-config="region=$TF_BACKEND_REGION" \
             -backend-config="key=$TF_BACKEND_KEY" \
             --reconfigure
-          terraform apply \
+          terraform destroy \
             -var "eks_host=$EKS_HOST" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
