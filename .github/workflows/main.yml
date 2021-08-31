@@ -65,7 +65,7 @@ jobs:
             -backend-config="region=$TF_BACKEND_REGION" \
             -backend-config="key=$TF_BACKEND_KEY" \
             --reconfigure
-          terraform destroy \
+          terraform apply \
             -var "eks_host=$EKS_HOST" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
@@ -75,5 +75,4 @@ jobs:
             -var "ECR_REGISTRY=$ECR_REGISTRY" \
             -var "ECR_REPOSITORY=$ECR_REPOSITORY" \
             --auto-approve
-          echo "$ENV_NAME is deployed"
 
