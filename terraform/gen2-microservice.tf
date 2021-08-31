@@ -10,5 +10,6 @@ module "seed-microservice" {
   depends_on = [
     kubernetes_namespace.namespace,
     kubernetes_service.seed_service,
+    kubernetes_service.dynamodb,
   ]
 }

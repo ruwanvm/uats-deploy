@@ -91,7 +91,8 @@ resource "kubernetes_deployment" "web-deployment" {
   depends_on = [
     kubernetes_namespace.namespace,
     kubernetes_secret.aws_keys,
-    kubernetes_service.web_service
+    kubernetes_service.web_service,
+    kubernetes_service.dynamodb,
   ]
 }
 
