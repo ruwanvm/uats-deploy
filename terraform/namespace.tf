@@ -1,4 +1,4 @@
-resource "kubernetes_namespace" "app-namespace" {
+resource "kubernetes_namespace" "namespace" {
   metadata {
     name = var.environment
   }

@@ -9,6 +9,8 @@ This repository is used to deploy UATS microservice application to EKS cluster. 
 * TF_BACKEND_REGION - AWS region of the S3 bucket used to save terraform state files
 * TF_AWS_ACCESS_KEY_ID - AWS access key id used by Terraform to provision the infrastructure
 * TF_AWS_SECRET_ACCESS_KEY - AWS secret access key used by Terraform to provision the infrastructure
+* POD_ACCESS_KEY_ID - AWS access key id used by microservices to use aws resources
+* POD_SECRET_ACCESS_KEY - AWS secret access key used by microservices to use aws resources
 * EKS_HOST_{branch-name} - Kubernetes host endpoint of the EKS cluster
 * EKS_TOKEN_{branch-name} - Kubernetes token of the EKS cluster
 * EKS_CERT_{branch-name} - Kubernetes certificate of the EKS cluster

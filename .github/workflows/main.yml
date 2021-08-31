@@ -52,6 +52,8 @@ jobs:
           EKS_HOST: ${{ secrets[env.EKS_HOST_KEY] }}
           EKS_TOKEN: ${{ secrets[env.EKS_TOKEN_KEY] }}
           EKS_CERTIFICATE: ${{ secrets[env.EKS_CERTIFICATE_KEY] }}
+          POD_AWS_ACCESS_KEY_ID: ${{ secrets.POD_ACCESS_KEY_ID }}
+          POD_AWS_SECRET_ACCESS_KEY: ${{ secrets.POD_SECRET_ACCESS_KEY }}
         run: |
           cd ./terraform
           terraform init \
@@ -64,6 +66,8 @@ jobs:
             -var "eks_token=$EKS_TOKEN" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
+            -var "POD_AWS_ACCESS_KEY_ID=$POD_AWS_ACCESS_KEY_ID" \
+            -var "POD_AWS_SECRET_ACCESS_KEY=$POD_AWS_SECRET_ACCESS_KEY" \
             --auto-approve
           echo "$ENV_NAME is deployed"
 
