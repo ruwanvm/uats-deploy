@@ -24,7 +24,7 @@ variable "ECR_REGISTRY" {
 }
 
 variable "ECR_REPOSITORY" {
-  description = "ECR registry endpoint"
+  description = "ECR repository name"
 }
 
 variable "APP_VERSION" {

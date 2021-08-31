@@ -70,7 +70,7 @@ jobs:
             -var "POD_AWS_ACCESS_KEY_ID=$POD_AWS_ACCESS_KEY_ID" \
             -var "POD_AWS_SECRET_ACCESS_KEY=$POD_AWS_SECRET_ACCESS_KEY" \
             -var "ECR_REGISTRY=$ECR_REGISTRY" \
-            -var "ECR_REPOSITORY=$ECR_REPOSITORY_GEN2" \
+            -var "ECR_REPOSITORY=$ECR_REPOSITORY" \
             --auto-approve
           echo "$ENV_NAME is deployed"
 
