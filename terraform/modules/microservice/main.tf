@@ -98,7 +98,7 @@ resource "kubernetes_deployment" "microservice-deployment" {
               memory = var.memory
             }
           }
-          image_pull_policy = "IfNotPresent"
+          image_pull_policy = "Always"
         }
       }
     }
