@@ -57,6 +57,6 @@ jobs:
             -var "eks_host=$EKS_HOST" \
             -var "eks_token=$EKS_TOKEN" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
-            -var "environment=$ENV_NAME"
+            -var "environment=$ENV_NAME" \
             --auto-approve
 
