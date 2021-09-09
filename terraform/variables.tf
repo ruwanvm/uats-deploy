@@ -33,6 +33,6 @@ variable "APP_VERSION" {
 
 locals {
   cluster_name = "${var.environment}-eks-cluster"
-  env_name_gen2 = "uatsdev-v2" # Change to use this from Variable passed from Pipeline
+  env_name_gen2 = "uatsdev-v2"                                   # Change to use this from Variable passed from Pipeline
   dynamodb_endpoint = "dynamodb.${var.AWS_REGION}.amazonaws.com"
 }
