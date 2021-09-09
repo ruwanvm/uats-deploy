@@ -61,6 +61,7 @@ jobs:
           TF_BACKEND_KEY: terraform/$ENV_NAME-kubernetes-deployment.tfstate
           # APP_VERSION variable should be applied when adding to main workflow and add it to terraform apply also
         run: |
+          echo $TF_BACKEND_KEY
           cd ./terraform
           terraform init \
             -backend-config="bucket=$TF_BACKEND_BUCKET" \
