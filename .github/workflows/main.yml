@@ -3,6 +3,7 @@ on:
   push:
     branches:
       - main # Add more branches
+      - parakum
 jobs:
   prepare:
     name: Prepare Workspace

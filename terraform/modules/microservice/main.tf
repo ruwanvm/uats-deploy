@@ -52,10 +52,16 @@ resource "kubernetes_deployment" "microservice-deployment" {
           name  = var.microservice_name
           image = "${var.ecr_registry}/${var.ecr_repo}:${var.app_version}"
           port {
+            container_port = 4801
+          }
+          port {
             container_port = 7778
           }
           port {
-            container_port = 4801
+            container_port = 8000
+          }
+          port {
+            container_port = 8080
           }
 
           env {
