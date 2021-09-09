@@ -1,9 +1,11 @@
 variable "eks_host" {
   description = "EKS cluster endpoint"
 }
+
 variable "eks_certificate" {
   description = "EKS cluster certificate value"
 }
+
 variable "environment" {
   description = "Environment name"
 }
