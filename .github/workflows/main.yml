@@ -58,7 +58,7 @@ jobs:
           POD_AWS_SECRET_ACCESS_KEY: ${{ secrets.POD_SECRET_ACCESS_KEY }}
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_GEN2 }}
-          TF_BACKEND_KEY: terraform/${{ env.ENV_NAME }}-kubernetes-deployment.tfstate
+          TF_BACKEND_KEY: terraform/${{ env.ENV_NAME }}-deployment.tfstate
           # APP_VERSION variable should be applied when adding to main workflow and add it to terraform apply also
         run: |
           echo $TF_BACKEND_KEY
