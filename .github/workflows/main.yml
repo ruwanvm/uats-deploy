@@ -40,7 +40,6 @@ jobs:
       EKS_REGION_KEY: ${{ needs.prepare.outputs.eks_region_key }}
       TF_BACKEND_BUCKET: ${{ secrets.TF_BACKEND_BUCKET }}
       TF_BACKEND_REGION: ${{ secrets.TF_BACKEND_REGION }}
-      TF_BACKEND_KEY: terraform/$ENV_NAME-$REPO_NAME-kubernetes-deployment.tfstate
     steps:
       - name: Clone Repository
         uses: actions/checkout@v2
@@ -59,6 +58,7 @@ jobs:
           POD_AWS_SECRET_ACCESS_KEY: ${{ secrets.POD_SECRET_ACCESS_KEY }}
           ECR_REGISTRY: ${{ secrets.ECR_REGISTRY }}
           ECR_REPOSITORY: ${{ secrets.ECR_REPOSITORY_GEN2 }}
+          TF_BACKEND_KEY: terraform/$ENV_NAME-kubernetes-deployment.tfstate
           # APP_VERSION variable should be applied when adding to main workflow and add it to terraform apply also
         run: |
           cd ./terraform
@@ -67,7 +67,7 @@ jobs:
             -backend-config="region=$TF_BACKEND_REGION" \
             -backend-config="key=$TF_BACKEND_KEY" \
             --reconfigure
-          terraform destroy \
+          terraform refresh \
             -var "eks_host=$EKS_HOST" \
             -var "eks_certificate=$EKS_CERTIFICATE" \
             -var "environment=$ENV_NAME" \
